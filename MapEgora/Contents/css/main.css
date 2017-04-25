@@ -1,0 +1,17 @@
+#map{
+    height: 800px;
+    width: 100%;
+}
+h3 {
+    color: #FCA205;
+}
+
+.blacknav {
+    background-color: #282828;
+}
+.bg-title1{
+    background-color: #dbffd0;
+}
+.logo{
+    background: image('/RouteApp/static/img/logo.png');
+}

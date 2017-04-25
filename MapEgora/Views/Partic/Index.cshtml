@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+    <div> 
+        <h3>Распродажа книг</h3>
+        <table>
+            <tr class="header">
+                <td><p>Имя</p></td>
+                <td><p>Почта</p></td>
+                <td><p>Телефон</p></td>
+                <td></td>
+            </tr>
+            
+             @foreach (var b in ViewBag.Partic)
+                {
+                    <tr>
+                        <td><p>@b.Name</p></td>
+                        <td><p>@b.Email</p></td>
+                        <td><p>@b.Phone</p></td>
+                        <td></td>
+                    </tr>
+                }
+            
+        </table>
+</div>
+</body>
+</html>

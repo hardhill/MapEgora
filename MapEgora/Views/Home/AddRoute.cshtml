@@ -1,0 +1,88 @@
+﻿
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MapEgora</title>
+    <link rel="stylesheet" href="~/Contents/lib/bootstrap-4.0.0-alpha.6-dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Contents/css/main.css">
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+            integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
+            crossorigin="anonymous"></script>
+    <script>
+        function GotoRoutes() {
+            window.URL(new ("/Home/Routes"));
+        }
+    </script>
+
+</head>
+<body>
+    <!-- Статическая навигационная панель -->
+    <nav class="navbar navbar-toggleable-md navbar-light bg-title1">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/Home/Index"><i class="logo"></i>MapEgora</a>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/Home/Routes">Маршруты<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Вход</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Регистрация</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+    <div class="container">
+        <div class="card">
+            <div class="card-header"><h3>Новый маршрут</h3></div>
+            <div class="card-block">
+                <form id="frmAddRoute" method="post" action="AddRoute">
+                    <div class="form-group row">
+                        <label for="txtNameRoute" class="col-2 col-form-label">Название маршрута</label>
+                        <div class="col-10">
+                            <input class="form-control" type="text" id="txtNameRoute">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="txtDicrRoute" class="col-2 col-form-label">Описание</label>
+                        <div class="col-10">
+                            <textarea class="form-control" id="txtDiscrRoute" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="exampleInputFile" class="col-2 col-form-label">Файл изображения</label>
+                        <input type="file" class="form-control-file col-10" id="mapInpitFile" aria-describedby="fileHelp">
+                    </div>
+                    <small id="fileHelp" class="form-text text-muted">Выберите файл с изображением маршрута. Формат файла jpeg не должен превышать 5МБ</small>
+                    
+                </form>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary" form="frmAddRoute">Сохранить</button>
+                <button type="button" class="btn" form="frmAddRoute" onclick="GotoRoutes()">Отмена</button>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
+            integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"
+            integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn"
+            crossorigin="anonymous"></script>
+</body>
+</html>

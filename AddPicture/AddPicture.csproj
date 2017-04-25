@@ -8,12 +8,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CB5DC024-F827-4D30-BC90-FC0D34CBBFBA}</ProjectGuid>
+    <ProjectGuid>{6C5E44C1-FE39-4A0C-8811-96AE3E360671}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MapEgora</RootNamespace>
-    <AssemblyName>MapEgora</AssemblyName>
+    <RootNamespace>AddPicture</RootNamespace>
+    <AssemblyName>AddPicture</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
@@ -94,54 +94,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Contents\css\main.css" />
-    <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-grid.css" />
-    <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-grid.min.css" />
-    <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-reboot.css" />
-    <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-reboot.min.css" />
-    <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\css\bootstrap.css" />
-    <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\css\bootstrap.min.css" />
-    <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\js\bootstrap.js" />
-    <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\js\bootstrap.min.js" />
     <Content Include="Global.asax" />
-    <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-grid.css.map" />
-    <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-grid.min.css.map" />
-    <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-reboot.css.map" />
-    <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-reboot.min.css.map" />
-    <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\css\bootstrap.css.map" />
-    <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\css\bootstrap.min.css.map" />
-    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\jquery-1.10.2.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Views\Partic\Index.cshtml" />
+    <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ParticController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DbEgoraContext.cs" />
-    <Compile Include="Models\Participant.cs" />
     <Compile Include="Models\Route.cs" />
+    <Compile Include="Models\RoutesContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
-    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\Routes.cshtml" />
-    <Content Include="Views\Home\AddRoute.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -151,7 +120,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Files\Img\" />
+    <Folder Include="Files\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -166,9 +135,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50063</DevelopmentServerPort>
+          <DevelopmentServerPort>51790</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50063/</IISUrl>
+          <IISUrl>http://localhost:51790/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
