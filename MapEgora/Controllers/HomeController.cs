@@ -1,6 +1,7 @@
 ﻿using MapEgora.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -32,14 +33,32 @@ namespace MapEgora.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddRoute(Route route, HttpPostedFileBase uploadImage)
+        public ActionResult AddRoute(HttpPostedFileBase uploadImage)
         {
             if (uploadImage != null)
             {
+
                 // получаем имя файла
                 string fileName = System.IO.Path.GetFileName(uploadImage.FileName);
-                // сохраняем файл в папку Files в проекте
-                uploadImage.SaveAs(Server.MapPath("~/Files/Img/" + fileName));
+                string strName = Request.Form.Get("Name");
+                string strDescription = Request.Form.Get("Description");
+                string urlimg = String.Format("{0}_{1}{2}", DateTime.Now.ToString("yyyyMMddHHmmssfff"), Guid.NewGuid(), Path.GetExtension(fileName));
+                Route route = new Route();
+                route.Name = strName;
+                route.Description = strDescription;
+                route.RouteImage = urlimg;
+                try
+                {
+                    // сохраняем файл в папку Files в проекте
+                    uploadImage.SaveAs(Server.MapPath("~/Files/Img/" + urlimg));
+                    db.Routes.Add(route);
+                    db.SaveChanges();
+                }
+                catch(Exception e)
+                {
+
+                }
+                
             }
             return RedirectToAction("Routes");
         }
