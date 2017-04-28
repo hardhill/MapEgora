@@ -33,16 +33,19 @@ namespace MapEgora.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddRoute(HttpPostedFileBase uploadImage)
+        public ActionResult AddRoute(HttpPostedFileBase uploadImage,HttpPostedFileBase uploadKML, IEnumerable<HttpPostedFileBase> uploadPhotos)
         {
-            if (uploadImage != null)
+            if ((uploadImage != null)&&(uploadKML!=null))
             {
 
                 // получаем имя файла
-                string fileName = System.IO.Path.GetFileName(uploadImage.FileName);
+                string fileNameImage = System.IO.Path.GetFileName(uploadImage.FileName);
+                string fileNameKML = System.IO.Path.GetFileName(uploadKML.FileName);
+
                 string strName = Request.Form.Get("Name");
                 string strDescription = Request.Form.Get("Description");
-                string urlimg = String.Format("{0}_{1}{2}", DateTime.Now.ToString("yyyyMMddHHmmssfff"), Guid.NewGuid(), Path.GetExtension(fileName));
+                string urlimg = String.Format("{0}_{1}{2}", DateTime.Now.ToString("yyyyMMddHHmmssfff"), Guid.NewGuid(), Path.GetExtension(fileNameImage));
+                string urlkml = String.Format("{0}_{1}{2}", DateTime.Now.ToString("yyyyMMddHHmmssfff"), Guid.NewGuid(), Path.GetExtension(fileNameKML));
                 Route route = new Route();
                 route.Name = strName;
                 route.Description = strDescription;
@@ -51,6 +54,7 @@ namespace MapEgora.Controllers
                 {
                     // сохраняем файл в папку Files в проекте
                     uploadImage.SaveAs(Server.MapPath("~/Files/Img/" + urlimg));
+                    uploadKML.SaveAs(Server.MapPath("~/Files/Kml/" + urlkml));
                     db.Routes.Add(route);
                     db.SaveChanges();
                 }
@@ -61,6 +65,11 @@ namespace MapEgora.Controllers
                 
             }
             return RedirectToAction("Routes");
+        }
+
+        public ActionResult Photos()
+        {
+            return View();
         }
     }
 }

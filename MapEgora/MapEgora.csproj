@@ -130,15 +130,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201704261638210_InitialCreate.cs" />
-    <Compile Include="Migrations\201704261638210_InitialCreate.Designer.cs">
-      <DependentUpon>201704261638210_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201704270649409_MigrateDB.cs" />
-    <Compile Include="Migrations\201704270649409_MigrateDB.Designer.cs">
-      <DependentUpon>201704270649409_MigrateDB.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DbEgoraContext.cs" />
     <Compile Include="Models\Participant.cs" />
     <Compile Include="Models\Photo.cs" />
@@ -152,6 +143,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Routes.cshtml" />
     <Content Include="Views\Home\AddRoute.cshtml" />
+    <Content Include="Views\Home\Photos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -163,14 +155,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Files\Img\" />
     <Folder Include="Files\Kml\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201704261638210_InitialCreate.resx">
-      <DependentUpon>201704261638210_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201704270649409_MigrateDB.resx">
-      <DependentUpon>201704270649409_MigrateDB.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
