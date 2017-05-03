@@ -33,7 +33,7 @@ namespace MapEgora.Controllers
         }
 
         [HttpPost]
-        public ActionResult AddRoute(HttpPostedFileBase uploadImage,HttpPostedFileBase uploadKML, IEnumerable<HttpPostedFileBase> photofile)
+        public ActionResult AddRoute(HttpPostedFileBase uploadImage,HttpPostedFileBase uploadKML,IEnumerable<HttpPostedFileBase> ffile)
         {
             if ((uploadImage != null)&&(uploadKML!=null))
             {
@@ -44,7 +44,7 @@ namespace MapEgora.Controllers
 
                 string strName = Request.Form.Get("Name");
                 string strDescription = Request.Form.Get("Description");
-                string arrPhoto = Request.Form.Get("photofile");
+                int arrPhoto = Request.Files.Count;
                 string urlimg = String.Format("{0}_{1}{2}", DateTime.Now.ToString("yyyyMMddHHmmssfff"), Guid.NewGuid(), Path.GetExtension(fileNameImage));
                 string urlkml = String.Format("{0}_{1}{2}", DateTime.Now.ToString("yyyyMMddHHmmssfff"), Guid.NewGuid(), Path.GetExtension(fileNameKML));
                 Route route = new Route();

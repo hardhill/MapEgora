@@ -21,9 +21,12 @@
         } else {
             alert('The File APIs are not fully supported in this browser.');
         }
+        var nfile = 0;
 
         function handleFileSelect(evt) {
             var files = evt.target.files; // FileList object
+            nfile++;
+            $('#hiddenfiles').append("<input type=\"hidden\" name=\"ffile\" id=\"" + "ff" + nfile.toString() + "\"/>");
 
             // Loop through the FileList and render image files as thumbnails.
             for (var i = 0, f; f = files[i]; i++) {
@@ -43,11 +46,16 @@
                         span.innerHTML = ['<img class="thumb" src="', e.target.result,
                             '" title="', escape(theFile.name), '"/>'].join('');
                         document.getElementById('photolist').insertBefore(span, null);
+
+                        //------
+                        document.getElementById("ff" + nfile.toString()).value = document.getElementById("photofiles").value;
+
                     };
                 })(f);
 
                 // Read in the image file as a data URL.
                 reader.readAsDataURL(f);
+
             }
         }
 
@@ -87,6 +95,9 @@
     <div class="container">
         <div class="card">
             <form id="frmAddRoute" action="/Home/AddRoute" method="post" enctype="multipart/form-data">
+                <div id="hiddenfiles">
+                    
+                </div>
 
                 <div class="card-header"><h3>Новый маршрут</h3></div>
                 <div class="card-block">
@@ -121,9 +132,9 @@
                         <div class="col-2"></div>
                         <small id="fileHelp2" class="form-text text-muted col-10">Выберите файл KML, который не должен превышать 5МБ</small>
                     </div>
-                    <input type="file" id="photofiles" name="photofile[]" multiple />
+                    <input type="file" size="0" id="photofiles" name="photofile"/>
                     <div class="form-group row">
-                        <output id="photolist"></output>
+                        <output id="photolist" name="photos"></output>
                     </div>
                 </div>
                 <div class="card-footer">
