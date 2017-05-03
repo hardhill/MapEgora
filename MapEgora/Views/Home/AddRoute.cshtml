@@ -14,7 +14,48 @@
     <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
             integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n"
             crossorigin="anonymous"></script>
-    
+    <script>
+        // Check for the various File API support.
+        if (window.File && window.FileReader && window.FileList && window.Blob) {
+            // Great success! All the File APIs are supported.
+        } else {
+            alert('The File APIs are not fully supported in this browser.');
+        }
+
+        function handleFileSelect(evt) {
+            var files = evt.target.files; // FileList object
+
+            // Loop through the FileList and render image files as thumbnails.
+            for (var i = 0, f; f = files[i]; i++) {
+
+                // Only process image files.
+                if (!f.type.match('image.*')) {
+                    continue;
+                }
+
+                var reader = new FileReader();
+
+                // Closure to capture the file information.
+                reader.onload = (function (theFile) {
+                    return function (e) {
+                        // Render thumbnail.
+                        var span = document.createElement('span');
+                        span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+                        document.getElementById('photolist').insertBefore(span, null);
+                    };
+                })(f);
+
+                // Read in the image file as a data URL.
+                reader.readAsDataURL(f);
+            }
+        }
+
+        $(document).ready(function () {
+            document.getElementById('photofiles').addEventListener('change', handleFileSelect, false);
+        });
+    </script>
+
 
 </head>
 <body>
@@ -46,7 +87,7 @@
     <div class="container">
         <div class="card">
             <form id="frmAddRoute" action="/Home/AddRoute" method="post" enctype="multipart/form-data">
-                
+
                 <div class="card-header"><h3>Новый маршрут</h3></div>
                 <div class="card-block">
 
@@ -66,10 +107,10 @@
                         <label for="mapInputFile" class="col-2 col-form-label">Файл изображения</label>
                         <input type="file" class="form-control-file col-10" id="mapInpitFile" aria-describedby="fileHelp" name="uploadImage">
                     </div>
-                    
+
                     <div class="form-group row">
                         <div class="col-2"></div>
-                        <small id="fileHelp" class="form-text text-muted col-10">Выберите файл с изображением маршрута. Формат файла jpeg не должен превышать 5МБ</small>    
+                        <small id="fileHelp" class="form-text text-muted col-10">Выберите файл с изображением маршрута. Формат файла jpeg не должен превышать 5МБ</small>
                     </div>
                     <div class="form-group row">
                         <label for="kmlInputFile" class="col-2 col-form-label">Файл KML</label>
@@ -80,8 +121,9 @@
                         <div class="col-2"></div>
                         <small id="fileHelp2" class="form-text text-muted col-10">Выберите файл KML, который не должен превышать 5МБ</small>
                     </div>
-                    <div class="form-group">
-                        <a href="/Home/Photos" class="btn">Добавить фото</a>
+                    <input type="file" id="photofiles" name="photofile[]" multiple />
+                    <div class="form-group row">
+                        <output id="photolist"></output>
                     </div>
                 </div>
                 <div class="card-footer">

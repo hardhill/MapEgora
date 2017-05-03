@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Contents\css\main.css" />
+    <Content Include="Contents\img\addphoto.png" />
     <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-grid.css" />
     <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-grid.min.css" />
     <Content Include="Contents\lib\bootstrap-4.0.0-alpha.6-dist\css\bootstrap-reboot.css" />

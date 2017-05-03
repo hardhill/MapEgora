@@ -1,7 +1,8 @@
-#map{
+#map {
     height: 800px;
     width: 100%;
 }
+
 h3 {
     color: #FCA205;
 }
@@ -9,9 +10,19 @@ h3 {
 .blacknav {
     background-color: #282828;
 }
-.bg-title1{
+
+.bg-title1 {
     background-color: #dbffd0;
 }
-.logo{
+
+.logo {
     background: image('/RouteApp/static/img/logo.png');
 }
+
+.thumb {
+    height: 75px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+}
+
+
