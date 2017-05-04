@@ -144,7 +144,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Routes.cshtml" />
     <Content Include="Views\Home\AddRoute.cshtml" />
-    <Content Include="Views\Home\Photos.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -156,6 +155,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Files\Img\" />
     <Folder Include="Files\Kml\" />
+    <Folder Include="Files\Photo\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

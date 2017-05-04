@@ -12,11 +12,16 @@ namespace MapEgora.Models
         [Required(ErrorMessage = "Название маршрута является обязательным значением!")]
         public string Name { get; set; }
         public string Description { get; set; }
-        [Required(ErrorMessage ="Необходимо указать файл карты маршрута")]
+        [Required(ErrorMessage = "Необходимо указать файл карты маршрута")]
         public string RouteImage { get; set; }
         [Required(ErrorMessage = "Необходимо указать файл KML маршрута")]
         public string RouteKML { get; set; }
         public virtual ICollection<Photo> Photos { get; set; }
-       
+
+        public Route()
+        {
+            Photos = new List<Photo>();
+        }
+
     }
 }

@@ -10,5 +10,6 @@ namespace MapEgora.Models
     {
         public DbSet<Participant> Participants { get; set; }
         public DbSet<Route> Routes { get; set; }
+        public DbSet<Photo> Photos { get; set; }
     }
 }

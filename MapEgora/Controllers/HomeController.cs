@@ -37,7 +37,6 @@ namespace MapEgora.Controllers
         {
             if ((uploadImage != null)&&(uploadKML!=null))
             {
-
                 // получаем имя файла
                 string fileNameImage = System.IO.Path.GetFileName(uploadImage.FileName);
                 string fileNameKML = System.IO.Path.GetFileName(uploadKML.FileName);
@@ -51,27 +50,44 @@ namespace MapEgora.Controllers
                 route.Name = strName;
                 route.Description = strDescription;
                 route.RouteImage = urlimg;
+                route.RouteKML = urlkml;
                 try
                 {
                     // сохраняем файл в папку Files в проекте
                     uploadImage.SaveAs(Server.MapPath("~/Files/Img/" + urlimg));
                     uploadKML.SaveAs(Server.MapPath("~/Files/Kml/" + urlkml));
-                    db.Routes.Add(route);
+                    
+                    if (ffile != null)
+                    {
+                        foreach (HttpPostedFileBase f in ffile)
+                        {
+                            string photoNameImage = System.IO.Path.GetFileName(f.FileName);
+                            string urlphoto = String.Format("{0}_{1}{2}", DateTime.Now.ToString("yyyyMMddHHmmssfff"), Guid.NewGuid(), Path.GetExtension(photoNameImage));
+                            Photo photo = new Photo();
+                            photo.PhotoName = urlphoto;
+                            photo.Photocreated = DateTime.Now;
+                            photo.Description = photoNameImage;
+                route.Photos.Add(photo);
+                            f.SaveAs(Server.MapPath("~/Files/Photo/" + urlphoto));
+                        }
+                    }
+
+                    db.Entry(route).State = System.Data.Entity.EntityState.Added;
                     db.SaveChanges();
+                    
                 }
                 catch(Exception e)
                 {
 
                 }
-                
+
+
+
             }
             return RedirectToAction("Routes");
         }
 
-        public ActionResult Photos()
-        {
-            return View();
-        }
+        
 
         protected override void Dispose(bool disposing)
         {
