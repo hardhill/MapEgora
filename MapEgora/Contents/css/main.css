@@ -25,6 +25,27 @@ h3 {
     margin: 10px 5px 0 0;
 }
 
-.routename{
 
+.titleimg {
+    position: relative;
+    bottom: 14em;
+    left: 0px;
+    padding: 3px 10px;
+    width: 800px;
+    background: rgba(255, 255, 255, 0.55);
 }
+
+.oneimage {
+    height: 200px;
+    margin-top: 10px;
+}
+
+.photki {
+    padding-left: 10px;
+}
+
+    .photki img {
+        height: 75px;
+        border: 1px solid #000;
+        margin: 10px 5px 0 0;
+    }

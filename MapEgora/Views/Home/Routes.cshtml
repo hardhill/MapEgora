@@ -1,6 +1,7 @@
 ﻿@using MapEgora.Models
 @model IEnumerable<MapEgora.Models.Route>
 
+
 @{
     Layout = null;
 }
@@ -45,24 +46,39 @@
 
         </div>
     </nav>
-    <div class="container-fluid">
+    <div class="container">
         <div class="card">
             <div class="card-header"><h3>Маршруты</h3></div>
-            
-            <div class="card-block m-0">
-             @foreach (MapEgora.Models.Route route in Model)
-             {
-                <div>
-                    <img class="card-img-top" src="~/Files/Img/@route.RouteImage" />
-                    <div class="routename"></div>
-                </div>
 
-             }   
+            <div class="card-block m-0">
+                @foreach (MapEgora.Models.Route route in Model)
+                {
+                    <div class="oneimage">
+                        <img class="mapimage" src="~/Files/Img/@route.RouteImage" />
+                        <div class="titleimg ">
+                            @route.Name
+                        </div>
+                    </div>
+
+                    <div class="photki">
+                       @{ 
+                           var selectedPhotos = new DbEgoraContext().Photos.Where(photo=>(photo.RouteId==@route.Id)).ToList() ;
+                           
+                       }
+                        @foreach(Photo photo in selectedPhotos)
+                        {
+                            <img src="~/Files/Photo/@photo.PhotoName"/>
+                        }
+                    </div>
+
+                           }
             </div>
-            
-            <div class="card-footer">@Html.ActionLink("Добавить карту маршрута","AddRoute")</div>
+
+            <div class="card-footer">@Html.ActionLink("Добавить карту маршрута", "AddRoute")</div>
         </div>
     </div>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"
             integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb"
             crossorigin="anonymous"></script>
